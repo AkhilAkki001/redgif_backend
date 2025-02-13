@@ -96,11 +96,12 @@ export default function Home() {
             <div className="mt-4">
               <h2 className="text-xl font-semibold mb-2">Video:</h2>
               <video 
-                src={result.gif.urls.hd}
+                src={`/api/proxy-video?url=${encodeURIComponent(result.gif.urls.hd)}`}
                 controls
                 autoPlay
                 loop
                 className="w-full max-h-[70vh] rounded-lg"
+                playsInline
               >
                 Your browser does not support the video tag.
               </video>
