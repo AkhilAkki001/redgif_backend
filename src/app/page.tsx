@@ -91,8 +91,20 @@ export default function Home() {
             <textarea
               value={JSON.stringify(result, null, 2)}
               readOnly
-              className="w-full h-96 p-4 font-mono text-sm bg-gray-50 border rounded-md"
+              className="w-full h-48 p-4 font-mono text-sm bg-gray-50 border rounded-md"
             />
+            <div className="mt-4">
+              <h2 className="text-xl font-semibold mb-2">Video:</h2>
+              <video 
+                src={result.gif.urls.hd}
+                controls
+                autoPlay
+                loop
+                className="w-full max-h-[70vh] rounded-lg"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         )}
       </div>
