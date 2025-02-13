@@ -3,9 +3,24 @@
 import { useState } from "react";
 import "./globals.css";
 
+interface RedgifsResponse {
+  gif: {
+    urls: {
+      hd: string;
+      sd: string;
+      poster: string;
+    };
+    tags: string[];
+    createDate: number;
+    duration: number;
+    views: number;
+    hasAudio: boolean;
+  };
+}
+
 export default function Home() {
   const [redgifsId, setRedgifsId] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<RedgifsResponse | null>(null);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
 

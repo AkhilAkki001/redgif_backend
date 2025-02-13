@@ -56,11 +56,17 @@ export async function GET(request: Request) {
     });
 
     return NextResponse.json(response.data);
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error fetching RedGifs data:', error);
+    if (axios.isAxiosError(error)) {
+      return NextResponse.json(
+        { error: error.response?.data?.message || error.message || 'Failed to fetch RedGifs data' },
+        { status: error.response?.status || 500 }
+      );
+    }
     return NextResponse.json(
-      { error: error.message || 'Failed to fetch RedGifs data' },
-      { status: error.response?.status || 500 }
+      { error: 'An unexpected error occurred' },
+      { status: 500 }
     );
   }
 }
